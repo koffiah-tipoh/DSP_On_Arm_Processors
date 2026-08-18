@@ -76,6 +76,10 @@ Each subproject is a standalone STM32CubeIDE project.
 3. **Project → Build Project**
 4. **Run → Run** (flashes via on-board ST-LINK and starts execution)
 
+## Demo
+
+[Watch the signal plotting walkthrough](1_Plotting_Signals_with_LogicAnalyzer/media/Signals_plotting_with_the_STM32_ILA_.mp4)
+
 ## Attribution
 
 Course content and structure follow [EmbeddedExpert.io's Digital Signal
