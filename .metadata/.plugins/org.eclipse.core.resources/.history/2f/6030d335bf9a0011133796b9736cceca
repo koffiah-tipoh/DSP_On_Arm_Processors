@@ -1,0 +1,10 @@
+#include "stm32f4xx.h"
+
+extern float _5hz_signal[HZ_5_SIG_LEN]
+
+int main() {
+
+    while(1){
+
+    }
+}
