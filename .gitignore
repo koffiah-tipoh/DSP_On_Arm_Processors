@@ -1,0 +1,14 @@
+# Eclipse/STM32CubeIDE workspace metadata
+.metadata/
+
+# Build artifacts
+Debug/
+Release/
+*.o
+*.elf
+*.map
+*.hex
+*.bin
+
+# STM32CubeIDE-specific caches
+**/.settings/
