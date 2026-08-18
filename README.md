@@ -67,9 +67,6 @@ rather than assumed to match the course material directly.
 └── README.md
 ```
 
-> Adjust this tree to match your actual folder names/progress — update as
-> new projects are added.
-
 ## Building & Flashing
 
 Each subproject is a standalone STM32CubeIDE project.
