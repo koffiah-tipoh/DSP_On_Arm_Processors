@@ -1,15 +1,52 @@
 #include "uart.h"
 
+#define GPIOAEN 	(1U<<0)
+#define UART2EN 	(1U<<17)
+#define CR1_TE 		(1U<<3)
+#define CR1_UE		(1U<<13)
+
+#define SYS_FREQ 	16000000
+#define APB1_CLK 	SYS_FREQ
+
+#define UART_BAUDRATE	115200
+
+static void uart2_set_baudrate(uint32_t periph_clk, uint32_t baudrate);
+
 void uart2_tx_init(void) {
 
 	/*** Configure UART GPIO Pin***/
 	/* Enable clock access to GPIOA */
+	RCC->AHB1ENR |= GPIOAEN;
+
 	/* Set PA2 mode to Alternate Function mode*/
+	GPIOA->MODER &=~ (1U<<4);
+	GPIOA->MODER |= (1U<<5);
+
 	/* Set PA2 alternate function type to UART_TX(AF7)*/
+	GPIOA->AFR[0] |= (1<<8);
+	GPIOA->AFR[0] |= (1<<9);
+	GPIOA->AFR[0] |= (1<<10);
+	GPIOA->AFR[0] &=~ (1<<11);
 
 	/*** Configure UART ***/
 	/* Enable clock access to UART2 */
+	RCC->APB1ENR |= UART2EN;
+
 	/* Configure baud rate */
+	uart2_set_baudrate(SYS_FREQ, UART_BAUDRATE);
+
 	/* Configure the transfer direction */
+	USART2->CR1 = CR1_TE;
+
 	/* Enable UART module*/
+	USART2->CR1 |= CR1_UE;
+}
+
+
+static unint16_t compute_uart_bd(uint32_t periph_clock, uint32_t baudrate) {
+	return ((periph_clk + (baudrate/2U))/baudrate);
+}
+
+static void uart2_set_baudrate(uint32_t periph_clock, uint32_t baudrate) {
+	USART->BRR = compute_uart_bd(periph_clock, baudrate);
 }
