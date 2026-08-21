@@ -1,5 +1,10 @@
+#include <stdio.h>
+
 #include "stm32f4xx.h"
 #include "signals.h"
+#include "uart.h"
+
+
 
 extern float _5hz_signal[HZ_5_SIG_LEN];
 float g_in_sig_samples;
@@ -11,8 +16,12 @@ int main(){
 	/* Enable the Floating Point Unit: Enable CP10 and CP11 full access */
 	SCB->CPACR |= ((3UL << 10*2) | (3UL << 11*2));
 
+	/* Initialize the uart*/
+	uart3_tx_init();
+
     while(1) {
-    	plot_input_signal();
+    	//plot_input_signal();
+    	printf("Hello from STM32...\n\r");
     }
 }
 
