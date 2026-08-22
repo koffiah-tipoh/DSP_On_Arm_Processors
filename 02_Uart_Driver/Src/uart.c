@@ -1,7 +1,7 @@
 #include "uart.h"
 
 #define GPIODEN 	(1U<<3)
-#define UART3EN 	(1U<<18)
+#define USART3EN 	(1U<<18)
 #define CR1_TE 		(1U<<3)
 #define CR1_UE		(1U<<13)
 #define SR_TXE		(1U<<7)
@@ -23,7 +23,7 @@ int __io_putchar(int ch) {/* Re-target printf to use uart3_write() function*/
 void uart3_tx_init(void) {
 
 	/*** Configure UART GPIO Pin***/
-	/* Enable clock access to GPIOA */
+	/* Enable clock access to GPIOD */
 	RCC->AHB1ENR |= GPIODEN;
 
 	/* Set PD8 mode to Alternate Function mode*/
@@ -37,8 +37,8 @@ void uart3_tx_init(void) {
 	GPIOD->AFR[1] &=~ (1U<<3);
 
 	/*** Configure UART ***/
-	/* Enable clock access to UART2 */
-	RCC->APB1ENR |= UART3EN;
+	/* Enable clock access to UART3 */
+	RCC->APB1ENR |= USART3EN;
 
 	/* Configure baud rate */
 	uart3_set_baudrate(SYS_FREQ, UART_BAUDRATE);
