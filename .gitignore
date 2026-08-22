@@ -12,3 +12,11 @@ Release/
 
 # STM32CubeIDE-specific caches
 **/.settings/
+
+# Python virtual environment
+.venv/
+
+# Python cache/bytecode
+__pycache__/
+*.pyc
+*.pyo
