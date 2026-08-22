@@ -57,13 +57,13 @@ rather than assumed to match the course material directly.
 
 ```
 .
-├── 01_Plotting_Signals_with_LogicAnalyzer/           # Bare-metal GPIO bring-up (register-level)
-├── 02-uart-driver/         # Bare-metal UART driver
-├── 03-fpu-cmsis-dsp/       # FPU enable + CMSIS-DSP setup
-├── 04-fir-filter/          # FIR filter implementation
-├── 05-iir-filter/          # IIR filter implementation
-├── 06-fft/                 # FFT-based spectral analysis
-├── 07-freertos/            # FreeRTOS task integration
+├── 01_Plotting_Signals_with_LogicAnalyzer/           	# Bare-metal GPIO bring-up (register-level)
+├── 02_Uart_Driver/         				# Bare-metal UART driver
+├── 03_Plotting_Signals_with_SerialPlotter/       	# Arduino / Python+QT plotting
+├── 04-fir-filter/          				# FIR filter implementation
+├── 05-iir-filter/          				# IIR filter implementation
+├── 06-fft/                 				# FFT-based spectral analysis
+├── 07-freertos/            				# FreeRTOS task integration
 └── README.md
 ```
 
